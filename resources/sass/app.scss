@@ -1,0 +1,211 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;700;900&display=swap');
+// Common
+@import 'common';
+// Variables
+@import 'variables';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+// TomTom maps
+@import '@tomtom-international/web-sdk-maps';
+// TomTom searchbox
+@import '@tomtom-international/web-sdk-plugin-searchbox';
+.map {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* COMMONS ROULES */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* UTILITIES */
+
+.bg_secondary {
+    background-color: $bg_secondary;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    padding: 0;
+}
+
+.bg_primary {
+    background-color: $bg_primary
+}
+
+.no-gutter {
+    --bs-gutter-x: 0rem;
+}
+
+.full_screen {
+    min-height: calc(100vh - 55.05px);
+}
+
+.w_100 {
+    width: 100%;
+}
+
+.tt-search-box {
+    border-radius: 10px;
+}
+
+.tt-search-box-input-container {
+    width: 300px;
+    border-radius: 10px;
+    transition: all 1s linear;
+}
+
+.tt-search-box-input-container:focus-within {
+    width: 500px;
+}
+
+.bg_warning {
+    background-color: $bg_warning;
+}
+
+.p-r {
+    position: relative;
+}
+
+.delate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(15%, -50%);
+}
+
+.col {
+    height: 100%;
+}
+
+
+
+#text {
+    background-color: var(--bs-warning);
+    width: fit-content;
+    text-transform: uppercase;
+    min-width: 150px;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    font-size: 0.5rem
+}
+
+.NotVisible {
+    display: none;
+}
+
+.sponsored {
+    background-color: var(--bs-warning);
+}
+
+.expired {
+    background-color: var(--bs-danger);
+    color: white
+}
+
+.custom-img{
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.custom-img-lg{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.select-services{
+    min-height: 200px;
+}
+
+#timer {
+    background-color: var(--bs-primary);
+    width: fit-content;
+    min-width: 150px;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    font-weight: 600;
+    color: white;
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+}
+
+@media screen and (max-width: 425px) {
+    #edit_query {
+        .col-4 {
+            h5 {
+                padding: 0.8rem !important;
+            }
+        }
+        .col {
+            padding: 1rem !important;
+            margin-top: 1rem;
+        }
+        .d_none {
+            display: none;
+        }
+    }
+    #query_mobile {
+        .media_none {
+            display: none !important;
+        }
+        .media_block {
+            display: block !important;
+        }
+    }
+    #timer {
+        top: -9rem;
+        right: -12rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #edit_query {
+        .col-4 {
+            h5 {
+                padding: 0.8rem !important;
+            }
+        }
+        .col {
+            padding: 1rem !important;
+            margin-top: 1rem;
+        }
+        .d_none {
+            display: none;
+        }
+    }
+    #timer {
+        top: -9rem;
+        right: -12rem;
+    }
+}

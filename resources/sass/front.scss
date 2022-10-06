@@ -1,0 +1,132 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;700;900&display=swap');
+// Common
+@import 'common';
+// Variables
+@import 'variables';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+// TomTom maps
+@import '@tomtom-international/web-sdk-maps';
+// TomTom searchbox
+@import '@tomtom-international/web-sdk-plugin-searchbox';
+
+/* COMMONS ROULES */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+#costum-a {
+    a {
+        position: relative;
+        color: #000;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #3471EB;
+    }
+    a::before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #3471EB;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+    a:hover::before {
+        transform: scaleX(1);
+    }
+}
+
+
+/* UTILITIES */
+
+.bg_grey {
+    background-color: $grey;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    padding: 0;
+}
+
+.bg_primary {
+    background-color: $bg_primary;
+}
+
+.no-gutter {
+    --bs-gutter-x: 0rem;
+}
+
+.w_100 {
+    width: 100%;
+}
+
+.h_400 {
+    height: 400px;
+}
+
+.w_fix {
+    width: fit-content;
+}
+
+.p_relative {
+    position: relative;
+}
+
+.p_fixed_maps {
+    color: $primary_color;
+    position: fixed;
+    z-index: 3;
+    bottom: 10%;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+.bg_secondary {
+    background-color: $bg_secondary
+}
+
+.font_size_big {
+    font-size: 1.5rem;
+}
+
+.icon_color {
+    color: $primary_color;
+}
+
+.card_hover {
+    transition: all 600ms;
+}
+
+.card_hover:hover {
+    transform: scale(1.2);
+    position: relative;
+    z-index: 2;
+}
+
+.disp_none {
+    display: none;
+}
