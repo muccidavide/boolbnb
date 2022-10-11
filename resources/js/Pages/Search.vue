@@ -2,20 +2,35 @@
   <div class="wrapper">
     <section class="container my-5 p-5 shadow bg_trend">
       <h1 class="p-2">Effettua una nuova ricerca</h1>
-      <div class="row   ">
+      <div class="row">
         <div>
           <!-- Advanced search -->
           <form method="POST" @submit.prevent="getGeoPosition">
             <div class="group">
-              <input autocomplete="off" required="" type="text" id="query_address" v-model="query"
-                @keyup="getAutocomplete" @keyup.38="listUp" @keyup.40="listDown" @keyup.enter="getGeoPosition"
-                class="input" />
+              <input
+                autocomplete="off"
+                required=""
+                type="text"
+                id="query_address"
+                v-model="query"
+                @keyup="getAutocomplete"
+                @keyup.38="listUp"
+                @keyup.40="listDown"
+                @keyup.enter="getGeoPosition"
+                class="input"
+              />
               <span class="highlight"></span>
               <span class="bar"></span>
               <label>Cerca per città o per indirizzo:</label>
               <ul class="dropdown_menu w-50" v-if="query.length > 0">
                 <li v-for="(address, index) in autocomplete" :key="index">
-                  <input type="text" class="w-100" readonly :value="address" @click="setQuery(address)" />
+                  <input
+                    type="text"
+                    class="w-100"
+                    readonly
+                    :value="address"
+                    @click="setQuery(address)"
+                  />
                 </li>
               </ul>
             </div>
@@ -23,62 +38,110 @@
               <div class="sx col-md-6">
                 <div class="group mt-3">
                   <label for="radius">Distanza dal centro (in km):</label>
-                  <br><br>
-                  <input type="number" class="form-control" name="radius" id="radius" min="0" step="10" v-model="radius"
-                    @keyup.enter="getGeoPosition" />
+                  <br /><br />
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="radius"
+                    id="radius"
+                    min="0"
+                    step="10"
+                    v-model="radius"
+                    @keyup.enter="getGeoPosition"
+                  />
                   <span class="highlight"></span>
                   <span class="bar"></span>
                 </div>
 
                 <div class="group">
-                  <label for="rooms" class="form-label">Numero minimo di stanze:</label>
-                  <br><br>
-                  <input type="number" class="form-control" name="rooms" id="rooms" min="1" max="10" v-model="rooms" />
+                  <label for="rooms" class="form-label"
+                    >Numero minimo di stanze:</label
+                  >
+                  <br /><br />
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="rooms"
+                    id="rooms"
+                    min="1"
+                    max="10"
+                    v-model="rooms"
+                  />
                 </div>
               </div>
 
               <div class="dx col-md-6">
                 <div class="group">
-                  <label for="beds" class="form-label">Numero minimo di letti:</label>
-                  <br><br>
-                  <input type="number" class="form-control" name="beds" id="beds" min="1" max="20" v-model="beds" />
+                  <label for="beds" class="form-label"
+                    >Numero minimo di letti:</label
+                  >
+                  <br /><br />
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="beds"
+                    id="beds"
+                    min="1"
+                    max="20"
+                    v-model="beds"
+                  />
                 </div>
 
                 <div class="group">
-                  <label for="baths" class="form-label">Numero minimo di bagni:</label>
-                  <br><br>
-                  <input type="number" class="form-control" name="baths" id="baths" min="1" max="20" v-model="baths" />
+                  <label for="baths" class="form-label"
+                    >Numero minimo di bagni:</label
+                  >
+                  <br /><br />
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="baths"
+                    id="baths"
+                    min="1"
+                    max="20"
+                    v-model="baths"
+                  />
                 </div>
               </div>
             </div>
 
             <div class="group">
-              <label for="services" class="form-label">Seleziona uno o più servizi:</label>
-              <br><br>
+              <label for="services" class="form-label"
+                >Seleziona uno o più servizi:</label
+              >
+              <br /><br />
               <div class="row row-cols-3 flex-wrap">
                 <div class="col" v-for="service in services" :key="service.id">
                   <div class="custom-control custom-checkbox">
-                    <input class="service custom-control-input" type="checkbox" name="service" id="service"
-                      :value="service.id">
+                    <input
+                      class="service custom-control-input"
+                      type="checkbox"
+                      name="service"
+                      id="service"
+                      :value="service.id"
+                    />
                     <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">{{ service.name }}</span>
+                    <span class="custom-control-description">{{
+                      service.name
+                    }}</span>
                   </div>
                 </div>
               </div>
-              <!--               <select class="form-select" name="services" id="services" v-model="selectedServices" multiple>
-                <option :value="service.id" v-for="service in services" :key="service.id">
-                  {{ service.name }}
-                </option>
-              </select> -->
             </div>
             <button type="submit">
               <div class="svg-wrapper-1">
                 <div class="svg-wrapper">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                  >
                     <path fill="none" d="M0 0h24v24H0z"></path>
-                    <path fill="currentColor"
-                      d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z">
-                    </path>
+                    <path
+                      fill="currentColor"
+                      d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                    ></path>
                   </svg>
                 </div>
               </div>
@@ -94,25 +157,37 @@
             <h4 class="d-flex justify-content-end mt-4 m-2 p-3">
               I nostri appartamenti
             </h4>
-            <div class="row 
-            row-cols-xl-5 
-            row-cols-lg-4
-            row-cols-md-3
-            row-cols-sm-1
-            g-4 py-3">
-              <div class="col" v-for="apartment in apartments" :key="apartment.id">
-                <router-link :to="{
-                  name: 'apartment',
-                  params: {
-                    slug: apartment.slug,
-                    query: query,
-                    radius: radius,
-                  },
-                }">
+            <div
+              class="
+                row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-1
+                g-4
+                py-3
+              "
+            >
+              <div
+                class="col"
+                v-for="apartment in apartments"
+                :key="apartment.id"
+              >
+                <router-link
+                  :to="{
+                    name: 'apartment',
+                    params: {
+                      slug: apartment.slug,
+                      query: query,
+                      radius: radius,
+                    },
+                  }"
+                >
                   <div class="card h-100 text-start">
-                    <img :src="'storage/' + apartment.thumb" :alt="apartment.title" />
-                    <div class="header-card ">
-                      <h4 class=" card-title custom-title">{{ apartment.title }}</h4>
+                    <img
+                      :src="'storage/' + apartment.thumb"
+                      :alt="apartment.title"
+                    />
+                    <div class="header-card">
+                      <h4 class="card-title custom-title">
+                        {{ apartment.title }}
+                      </h4>
                     </div>
                     <div class="description-card">
                       <p class="costum-text">{{ apartment.description }}</p>
@@ -172,7 +247,6 @@ export default {
   },
   methods: {
     getAutocomplete() {
-      //console.log('digitando');
       if (this.query) {
         axios
           .get(
@@ -222,12 +296,13 @@ export default {
             let lon = response.data.results[0].position.lon;
             this.lat = lat;
             this.lon = lon;
-            //console.log(document.querySelectorAll("input#service:checked"))
-            let nodeServices = document.querySelectorAll("input#service:checked");
+
+            let nodeServices = document.querySelectorAll(
+              "input#service:checked"
+            );
             let selectedServices = [];
-            nodeServices.forEach(nodeService => {
-              //console.log(nodeService.value);
-              selectedServices.push(nodeService.value)
+            nodeServices.forEach((nodeService) => {
+              selectedServices.push(nodeService.value);
             });
             if (selectedServices.length === 0) {
               this.selectedServices = ["all"];
@@ -249,9 +324,6 @@ export default {
                 },
               })
               .then((response) => {
-                //console.log(response);
-                //console.log(this.lat, this.lon, this.radius);
-                //console.log(response.data);
                 this.apartments = response.data;
                 this.loading = false;
               })
@@ -320,8 +392,8 @@ label {
   -webkit-transition: 0.2s ease all;
 }
 
-.input:focus~label,
-.input:valid~label {
+.input:focus ~ label,
+.input:valid ~ label {
   top: -20px;
   font-size: 14px;
   color: #3471eb;
@@ -335,7 +407,7 @@ label {
 
 .bar:before,
 .bar:after {
-  content: '';
+  content: "";
   height: 2px;
   width: 0;
   bottom: 1px;
@@ -354,8 +426,8 @@ label {
   right: 50%;
 }
 
-.input:focus~.bar:before,
-.input:focus~.bar:after {
+.input:focus ~ .bar:before,
+.input:focus ~ .bar:after {
   width: 50%;
 }
 
@@ -369,7 +441,7 @@ label {
   opacity: 0.5;
 }
 
-.input:focus~.highlight {
+.input:focus ~ .highlight {
   animation: inputHighlighter 0.3s ease;
 }
 
@@ -443,10 +515,10 @@ label {
   border: none;
   height: 100%;
   padding: 0.5rem;
-  background-color: #F8FAFC;
+  background-color: #f8fafc;
   transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border-radius: 5px;
-  transition: transform .5s;
+  transition: transform 0.5s;
 
   &:hover {
     box-shadow: 0 0 10px 4px #d0d0d0e8;
@@ -491,7 +563,7 @@ label {
   -webkit-box-orient: vertical;
 }
 
-form>.row {
+form > .row {
   align-items: flex-end;
 }
 
